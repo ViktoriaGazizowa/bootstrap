@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Добавить объявление</title>
+    <link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="index.html"><img src="image/лого.jpg" class="w-25 rounded-3" alt="logo"></a>
+          <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="navbar-collapse collapse" id="navbarSupportedContent" style>
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="index.html">Главная</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="kabinet.html">Личный кабинет</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="registration.html">Регистрация</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="add_pet.html">Добавить объявление</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="search.html">Поиск по объявлениям</a>
+              </li>
+            </ul>
+            <form class="d-flex">
+              <input class="form-control me-2" type="search" list="pets" placeholder="Поиск" aria-label="Search">
+              <button class="btn btn-primary" onclick="">Поиск</button>
+            </form>
+          </div>
+        </div>
+      </nav>
+  
+</header>
+<body>
+
+
+
+<!-- Кнопка для открытия модального окна -->
+<center><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#loginModal">
+Зарегистрироваться
+  </button> </center>
+  
+  <!-- Модальное окно -->
+  <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="loginModalLabel">Вход в личный кабинет</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Закрыть">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label for="username">Номер</label>
+                        <input type="text" class="form-control" id="username" placeholder="Введите номер" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Пароль</label>
+                        <input type="password" class="form-control" id="password" placeholder="Введите пароль" required>
+                    </div>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="rememberMe">
+                        <label class="form-check-label" for="rememberMe">Запомнить меня</label>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+                <button type="button" class="btn btn-primary" onclick="login()">Войти</button>
+            </div>
+        </div>
+    </div>
+  </div>
+  
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  
+  <script>
+    function login() {
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+  
+        // Проверка логина и пароля
+        if (username === '89111234567' && password === 'Password123') {
+            alert('Вход выполнен успешно!');
+            // Перенаправление на страницу личного кабинета
+            window.location.href = 'kabinet.html'; // Замените на URL вашего личного кабинета
+        } else {
+            alert('Неверный логин или пароль.');
+        }
+    }
+  </script>
+
+
+
+
+<div class="container">
+    <h1>Добавить объявление о животном</h1>
+    <form id="add-listing-form">
+        <div class="form-group">
+            <label for="animal-name">Имя животного:</label>
+            <input type="text" id="animal-name" name="animal-name" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="chip-number">Номер чипа:</label>
+            <input type="text" id="chip-number" name="chip-number" required>
+        </div>
+
+        <div class="form-group">
+            <label for="region">Район:</label>
+            <input type="text" id="region" name="region" required>
+        </div>
+
+        <div class="form-group">
+            <label for="date">Дата:</label>
+            <input type="date" id="date" name="date" required>
+        </div>
+
+        <div class="form-group">
+            <label for="animal-type">Вид животного:</label>
+            <select id="animal-type" name="animal-type" required>
+                <option value="">Выберите вид</option>
+                <option value="собака">Собака</option>
+                <option value="кошка">Кошка</option>
+                <option value="птица">Птица</option>
+                <option value="грызун">Грызун</option>
+                <option value="рептилия">Рептилия</option>
+                <option value="другое">Другое</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="animal-photo">Фото животного:</label>
+            <input type="file" id="animal-photo" name="animal-photo" accept="image/*" required>
+        </div>
+
+        <div class="form-group">
+            <label for="description">Описание:</label>
+            <textarea id="description" name="description" rows="4" required></textarea>
+        </div>
+
+        <button type="submit">Добавить объявление</button>
+    </form>
+</div>
+
+<style>
+    body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 600px;
+    margin: auto;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="date"],
+select,
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+</style>
+
+</body>
+</html>

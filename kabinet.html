@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Личный</title>
+    <link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="index.html"><img src="image/лого.jpg" class="w-25 rounded-3" alt="logo"></a>
+              <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="navbar-collapse collapse" id="navbarSupportedContent" style>
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="index.html">Главная</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="kabinet.html">Личный кабинет</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="registration.html">Регистрация</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="add_pet.html">Добавить объявление</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="search.html">Поиск по объявлениям</a>
+                  </li>
+                </ul>
+                <form class="d-flex">
+                  <input class="form-control me-2" type="search" list="pets" placeholder="Поиск" aria-label="Search">
+                  <button class="btn btn-primary" onclick="">Поиск</button>
+                </form>
+              </div>
+            </div>
+          </nav>
+      
+    </header>
+    <style>
+      body {
+          background-color: #f8f9fa;
+      }
+      .container {
+          margin-top: 50px;
+          background-color: #fff;
+          padding: 20px;
+          border-radius: 10px;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      .form-control {
+          margin-bottom: 15px;
+      }
+  </style>
+</head>
+
+<div class="container">
+  <h2>Личный кабинет</h2>
+
+  <div id="userInfo">
+      <p><strong>Имя:</strong> <span id="userName">Иван Иванов</span></p>
+      <p><strong>Телефон:</strong> <span id="userPhone">+7 (999) 123-45-67</span></p>
+      <p><strong>Email:</strong> <span id="userEmail">ivan@example.com</span></p>
+      <p><strong>Пароль:</strong> <span id="userPassword">********</span></p>
+      <p><strong>Время регистрации:</strong> <span id="registrationTime">01.01.2023 12:00</span></p>
+  </div>
+
+  <h4>Редактировать данные</h4>
+  <div class="mb-3">
+      <label for="editPhone" class="form-label">Новый телефон</label>
+      <input type="tel" class="form-control" id="editPhone" placeholder="+7 (999) 123-45-67">
+  </div>
+  <div class="mb-3">
+      <label for="editEmail" class="form-label">Новый Email</label>
+      <input type="email" class="form-control" id="editEmail" placeholder="ivan@example.com">
+  </div>
+  <button class="btn btn-primary" onclick="updateUserInfo()">Сохранить изменения</button>
+
+  <hr>
+
+  <button class="btn btn-danger" onclick="logout()">Выйти</button>
+</div>
+
+<script>
+  function updateUserInfo() {
+      const newPhone = document.getElementById("editPhone").value;
+      const newEmail = document.getElementById("editEmail").value;
+
+      if (newPhone) {
+          document.getElementById("userPhone").innerText = newPhone;
+      }
+      
+      if (newEmail) {
+          document.getElementById("userEmail").innerText = newEmail;
+      }
+
+      alert("Данные успешно обновлены!");
+  }
+
+  function logout() {
+      // Здесь можно добавить логику выхода из аккаунта
+      alert("Вы вышли из личного кабинета.");
+      window.location.href = "index.html"; // Перенаправление на главную страницу
+  }
+</script>
+
+
+
+
+
+
+<div class="container">
+  <div class="card" data-title="Кошка" data-description="Потерялся кот в Приморском районе">
+      <img src="image/IMG_8714.JPG" alt="Карточка 1">
+      <h3>Кошка</h3>
+      <p>Потерялась</p>
+      <button class="open-modal">Посмотреть</button>
+      <br>
+      <button class="open-modal">Удалить</button>
+  </div>
+  <div class="card" data-title="Кошка" data-description="Потерялась кошка белая пушистая ласковая">
+      <img src="image/IMG_8712.JPG" alt="Карточка 2">
+      <h3>Кошка</h3>
+      <p>Потерялась</p>
+      <button class="open-modal">Посмотреть</button>
+      <br>
+      <button class="open-modal">Удалить</button>
+  </div>
+  <div class="card" data-title="Кот" data-description="Потерялся кот очень грустный в Неском районе">
+      <img src="image/IMG_8713.JPG" alt="Карточка 3">
+      <h3>Кот</h3>
+      <p>Потерялся</p>
+      <button class="open-modal">Посмотреть</button>
+      <br>
+      <button class="open-modal">Удалить</button>
+
+  </div>
+</div>
+
+<div class="modal" id="modal">
+  <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2 id="modal-title"></h2>
+      <p id="modal-description"></p>
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll('.open-modal').forEach(button => {
+    button.addEventListener('click', function() {
+        const card = this.closest('.card');
+        const title = card.getAttribute('data-title');
+        const description = card.getAttribute('data-description');
+
+        document.getElementById('modal-title').innerText = title;
+        document.getElementById('modal-description').innerText = description;
+
+        document.getElementById('modal').style.display = 'block';
+    });
+});
+
+document.querySelector('.close').addEventListener('click', function() {
+    document.getElementById('modal').style.display = 'none';
+});
+
+window.addEventListener('click', function(event) {
+    const modal = document.getElementById('modal');
+    if (event.target === modal) {
+        modal.style.display = 'none';
+    }
+});
+
+</script>
+
+<script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
